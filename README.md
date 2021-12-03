@@ -12,3 +12,5 @@ As an input, my program takes 3 values in the command line
 In the single-threaded mode, the program start from the top left (0,0 coordinates) and pixels in the given box size are changed to the average color. The "blurring" process goes from left to the right, when the row finishes, boxes on the next row start "blurring". 
 
 In the multi-threaded mode, multiple threads (the number of cores of the computer) run at the same time.
+
+Eventually, after colors were changed the result image is saved in "result.jpg" file.
