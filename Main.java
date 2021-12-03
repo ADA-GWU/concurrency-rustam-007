@@ -35,14 +35,14 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        ArrayList<Thread> threads = new ArrayList<Thread>();
         // This part is for Single-Threaded Mode
         if (processingMode.equals("S")) {
             blur(0, 0, squareSize, img.getWidth(), img.getHeight());
         }
         // This part is for Multi-Threaded Mode
         else if (processingMode.equals("M")) {
-            ArrayList<Thread> threads = new ArrayList<Thread>();
+            
 
             for (int i = 0; i < cores; i++) {
                 int startThreadY = startY + img.getHeight() * i / cores;
@@ -64,11 +64,15 @@ public class Main {
          */
 
         else System.out.println("Please print either S or M");
-
+        
+        // wait for Threads to finish, so that to save the result image
         try {
+            for(Thread th : threads)
+                th.join();
+            
             File resultImage = new File("result.jpg");
             ImageIO.write(img, "jpg", resultImage);
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
