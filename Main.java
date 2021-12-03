@@ -53,11 +53,6 @@ public class Main {
 
                 threads.add(new Thread(() -> blur(startX, startThreadY, squareSize, img.getWidth(), endThreadY)));
                 threads.get(i).start();
-                /*try {
-                    threads.get(i).join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }*/
             }
         }
 
